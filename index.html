@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DS | Javascript Calculator</title>
+    <script type="text/javascript" src="main.js" async></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <p>Theme: <span>Hocus Pocus Calculus</span> - More themes coming soon!</p>
+      <!-- <p>Don't block the light sensor!</p> -->
+    </div>
+    <div class="container">
+      <div class="calculator-body">
+        <div class="light-sensor"></div>
+        <div class="screen">
+          <h2 id="top-num">-</h2>
+          <h1 id="main-num">0</h1>
+        </div>
+        <div class="keypad">
+          <form id="keypad-form">
+            <div class="row">
+              <input id="but_CE" type="button" class="button half-width color-1" onclick="clearEntry()" value="CE" />
+              <input id="but_AC" type="button" class="button half-width color-1" onclick="clearAll()" value="AC" />
+            </div>
+            <div class="row">
+              <div class="col">
+                <input id="but_pow" type="button" class="button color-2" onclick="power()" value="^" />
+                <input id="but_7" type="button" class="button color-1" onclick="updateMain(`7`)" value="7" />
+                <input id="but_4" type="button" class="button color-1" onclick="updateMain(`4`)" value="4" />
+                <input id="but_1" type="button" class="button color-1" onclick="updateMain(`1`)" value="1" />
+                <input id="but_0" type="button" class="button color-1" onclick="updateMain(`0`)" value="0" />
+              </div>
+              <div class="col">
+                <input id="but_root" type="button" class="button color-2" onclick="root()" value="rt" />
+                <input id="but_8" type="button" class="button color-1" onclick="updateMain(`8`)" value="8" />
+                <input id="but_5" type="button" class="button color-1" onclick="updateMain(`5`)" value="5" />
+                <input id="but_2" type="button" class="button color-1" onclick="updateMain(`2`)" value="2" />
+                <input id="but_dot" type="button" class="button color-1" onclick="updateMain(`.`)" value="." />
+              </div>
+              <div class="col">
+                <input id="but_inv" type="button" class="button color-2" onclick="inverse()" value="+/-" />
+                <input id="but_9" type="button" class="button color-1" onclick="updateMain(`9`)" value="9" />
+                <input id="but_6" type="button" class="button color-1" onclick="updateMain(`6`)" value="6" />
+                <input id="but_3" type="button" class="button color-1" onclick="updateMain(`3`)" value="3" />
+                <input id="but_equals" type="button" class="button color-1" onclick="equals()" value="=" />
+              </div>
+              <div class="col">
+                <input id="but_div" type="button" class="button color-2" onclick="divide()" value="/" />
+                <input id="but_mul" type="button" class="button color-2" onclick="multiply()" value="x" />
+                <input id="but_sub" type="button" class="button color-2" onclick="subtract()" value="-" />
+                <input id="but_add" type="button" class="button double-row color-2" onclick="add()" value="+" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
