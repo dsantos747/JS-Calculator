@@ -1,7 +1,9 @@
 // Javascript Calculator
 
+// Fix negative symbol in right hand side
+// Add themes!
+
 const updateMain = (a = "") => {
-  //Here should push a to the end of the string currently in mainNum. However, we are currently working with numbers - might have to do some string / number conversion
   if (mainNum == "0") {
     mainNum = mainNum.toString().replace(/^0+/, a);
   } else {
@@ -10,6 +12,7 @@ const updateMain = (a = "") => {
   mainNumObj.textContent = mainNum;
 };
 
+// Function to perform mathematical operations
 const operation = (op = "") => {
   let a = Number(topNum);
   let b = Number(mainNum);
@@ -32,6 +35,15 @@ const operation = (op = "") => {
   }
 };
 
+// Function for most maths operations
+const mathOp = (op = "") => {
+  topNum = operation(lastOp);
+  mainNum = 0;
+  topNumObj.textContent = topNum;
+  mainNumObj.textContent = mainNum;
+  lastOp = op;
+};
+
 // Function for totalling
 const equals = () => {
   mainNum = operation(lastOp);
@@ -39,60 +51,6 @@ const equals = () => {
   topNumObj.textContent = topNum;
   mainNumObj.textContent = mainNum;
   lastOp = "+";
-};
-
-// Function for addition
-const add = () => {
-  topNum = operation(lastOp);
-  mainNum = 0;
-  topNumObj.textContent = topNum;
-  mainNumObj.textContent = mainNum;
-  lastOp = "+";
-};
-
-// Function for subtration
-const subtract = () => {
-  topNum = operation(lastOp);
-  mainNum = 0;
-  topNumObj.textContent = topNum;
-  mainNumObj.textContent = mainNum;
-  lastOp = "-";
-};
-
-// Function for multiplication
-const multiply = () => {
-  topNum = operation(lastOp);
-  mainNum = 0;
-  topNumObj.textContent = topNum;
-  mainNumObj.textContent = mainNum;
-  lastOp = "*";
-};
-
-// Function for division
-const divide = () => {
-  topNum = operation(lastOp);
-  mainNum = 0;
-  topNumObj.textContent = topNum;
-  mainNumObj.textContent = mainNum;
-  lastOp = "/";
-};
-
-// Function for taking a to the the power of b
-const power = () => {
-  topNum = operation(lastOp);
-  mainNum = 0;
-  topNumObj.textContent = topNum;
-  mainNumObj.textContent = mainNum;
-  lastOp = "pow";
-};
-
-// Function for getting the b root of a
-const root = () => {
-  topNum = operation(lastOp);
-  mainNum = 0;
-  topNumObj.textContent = topNum;
-  mainNumObj.textContent = mainNum;
-  lastOp = "root";
 };
 
 // Function for multiplying entry by -1
@@ -120,7 +78,7 @@ const clearAll = () => {
 function simulateButtonClick(buttonId) {
   var button = document.getElementById(buttonId);
   if (button) {
-    button.click(); // Trigger the button's click event
+    button.click();
   }
 }
 
@@ -167,6 +125,68 @@ document.getElementById("keypad-form").addEventListener("keydown", function (eve
     event.preventDefault();
   }
 });
+
+// Prevent rmb menu on mobile when holding over light sensor
+const lightSensor = document.getElementById("light-sensor");
+lightSensor.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+// Theme selector
+const styleRoot = document.documentElement;
+const themeArr = ["Hocus Pocus Calculus", "CAL 9000"];
+let themeIndex = 0;
+const themeButton = document.getElementById("theme");
+
+function updateText() {
+  themeButton.textContent = themeArr[themeIndex];
+
+  switch (themeArr[themeIndex]) {
+    case "Hocus Pocus Calculus":
+      styleRoot.style.setProperty("--color-0-1", "#686554");
+      styleRoot.style.setProperty("--color-0-2", "#1A1712");
+      styleRoot.style.setProperty("--color-1-1", "#ee8833");
+      styleRoot.style.setProperty("--color-1-2", "#83440f");
+      styleRoot.style.setProperty("--color-2-1", "#333333");
+      styleRoot.style.setProperty("--color-3-1", "#38a842");
+      styleRoot.style.setProperty("--color-3-2", "#226d28");
+      styleRoot.style.setProperty("--color-4-1", "#ab6de6");
+      styleRoot.style.setProperty("--color-4-2", "#68328b");
+      styleRoot.style.setProperty("--color-5-1", "#000000");
+      styleRoot.style.setProperty("--color-5-2", "#ffffff");
+      styleRoot.style.setProperty("--color-6-1", "#ddffcc");
+      styleRoot.style.setProperty("--color-6-2", "#829678");
+      break;
+    case "CAL 9000":
+      styleRoot.style.setProperty("--color-0-1", "#d12d2d");
+      styleRoot.style.setProperty("--color-0-2", "#090916");
+      styleRoot.style.setProperty("--color-1-1", "#608788");
+      styleRoot.style.setProperty("--color-1-2", "#32484b");
+      styleRoot.style.setProperty("--color-2-1", "#f5dfee");
+      styleRoot.style.setProperty("--color-3-1", "#cecece");
+      styleRoot.style.setProperty("--color-3-2", "#7d7d7d");
+      styleRoot.style.setProperty("--color-4-1", "#25b9d7");
+      styleRoot.style.setProperty("--color-4-2", "#166b7c");
+      styleRoot.style.setProperty("--color-5-1", "#000000");
+      styleRoot.style.setProperty("--color-5-2", "#ffffff");
+      styleRoot.style.setProperty("--color-6-1", "#d12d2d");
+      styleRoot.style.setProperty("--color-6-2", "#3b0808");
+      break;
+  }
+}
+
+themeButton.addEventListener("click", function () {
+  themeIndex++;
+
+  if (themeIndex >= themeArr.length) {
+    themeIndex = 0;
+  }
+
+  updateText();
+});
+
+// Initial Page Setup
+updateText();
 
 var lastOp = "+";
 

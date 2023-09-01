@@ -1,6 +1,22 @@
+/* :root {
+  --color-0-1: #090916;
+  --color-0-2: #b2c9c5;
+  --color-1-1: #608788;
+  --color-1-2: #32484b;
+  --color-2-1: #f5dfee;
+  --color-3-1: #cecece;
+  --color-3-2: #7d7d7d;
+  --color-4-1: #25b9d7;
+  --color-4-2: #166b7c;
+  --color-5-1: #000000;
+  --color-5-2: #ffffff;
+  --color-6-1: #d12d2d;
+  --color-6-2: #3b0808;
+} */
+
 :root {
-  --color-0-1: #27231b;
-  --color-0-2: #686554;
+  --color-0-1: #686554;
+  --color-0-2: #1a1712;
   --color-1-1: #ee8833;
   --color-1-2: #83440f;
   --color-2-1: #333333;
@@ -10,6 +26,8 @@
   --color-4-2: #68328b;
   --color-5-1: #000000;
   --color-5-2: #ffffff;
+  --color-6-1: #ddffcc;
+  --color-6-2: #829678;
 }
 
 * {
@@ -26,12 +44,6 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
-
-/* *,
-*::before,
-*::after {
-  box-sizing: inherit;
-} */
 
 body {
   font-family: "Staatliches", Arial, Sans-serif;
@@ -52,8 +64,13 @@ body {
   justify-content: space-between;
 }
 
-.top-bar span {
+/* .top-bar span {
   color: var(--color-1-1);
+} */
+
+#theme {
+  color: var(--color-1-1);
+  cursor: pointer;
 }
 
 .container {
@@ -61,7 +78,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 4rem 8rem;
-  background: radial-gradient(var(--color-0-1), 90%, var(--color-0-2));
+  background: radial-gradient(var(--color-0-1), 30%, var(--color-0-2), 90%, var(--color-0-2));
   height: 100vh;
 }
 
@@ -71,6 +88,7 @@ body {
   border: solid 0.25rem var(--color-2-1);
   height: fit-content;
   border-radius: 5px;
+  max-width: 350px;
 }
 
 .light-sensor {
@@ -85,15 +103,18 @@ body {
 .screen {
   font-family: "Press Start 2P", "Staatliches", Arial, Sans-serif;
   padding: 2rem;
-  background-color: #ddffcc;
+  background-color: var(--color-6-1);
   border: solid 0.25rem var(--color-2-1);
-  min-width: 30rem;
+  width: 30rem;
   transition: all 0.5s ease-in-out;
+  overflow: hidden;
+  text-align: right;
+  direction: rtl;
 }
 
 .light-sensor:hover + .screen {
   color: #00000000;
-  background-color: #829678;
+  background-color: var(--color-6-2);
   transition: all 4s ease-in-out;
 }
 
